@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
-import MiniDrawer from '@/layouts/MiniDrawer';
+import MiniDrawer from '@/layouts/MainLayout';
 
 function Router() {
   return createBrowserRouter(

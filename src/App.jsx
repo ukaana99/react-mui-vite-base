@@ -4,27 +4,20 @@ import { RouterProvider } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
-import MiniDrawer from '@/layouts/MiniDrawer';
+import MainLayout from '@/layouts/MainLayout';
 import router from '@/routes';
 
-import { ThemeContext, ThemeContextProvider } from './store/theme-context';
-
-function EptwApp() {
-  const themeContext = useContext(ThemeContext);
-  return (
-    <ThemeProvider theme={themeContext.theme}>
-      <CssBaseline />
-      {/* <RouterProvider router={Router} /> */}
-      <MiniDrawer />
-    </ThemeProvider>
-  );
-}
+import { LayoutContext } from './store/layout-context';
 
 function App() {
+  const layoutContext = useContext(LayoutContext);
+
   return (
-    <ThemeContextProvider>
-      <EptwApp />
-    </ThemeContextProvider>
+    <ThemeProvider theme={layoutContext.theme}>
+      <CssBaseline />
+      {/* <RouterProvider router={Router} /> */}
+      <MainLayout />
+    </ThemeProvider>
   );
 }
 
