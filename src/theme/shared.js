@@ -1,8 +1,9 @@
+import { Colors } from '@/constants';
+
 const sharedTheme = {
   palette: {
     background: {
       default: '#f0f2f5',
-      // default: '#ffffff',
       paper: '#ffffff',
     },
   },

@@ -6,12 +6,14 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ThemeIcon from '@mui/icons-material/InvertColors';
-import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
+import InsightsIcon from '@mui/icons-material/Insights';
 import MenuIcon from '@mui/icons-material/Menu';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import SettingsIcon from '@mui/icons-material/Settings';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import MuiAppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -27,11 +29,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import { styled, useTheme } from '@mui/material/styles';
 
-import eptwDark from '@/assets/images/logos/eptw_dark.png';
-import eptwLight from '@/assets/images/logos/eptw_light.png';
-import petronasBw from '@/assets/images/logos/petronas_bw.png';
-import petronasRgb from '@/assets/images/logos/petronas_rgb.png';
 import { FlexBox } from '@/components/styled';
+import { Images } from '@/constants';
 import { ThemeContext } from '@/store/theme-context';
 
 import { CreateButton } from './styled';
@@ -40,6 +39,7 @@ const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
+  borderWidth: 0,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -54,6 +54,8 @@ const closedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
+  borderWidth: 0,
+
   [theme.breakpoints.up('sm')]: {
     width: `calc(${theme.spacing(10)} + 1px)`,
   },
@@ -92,9 +94,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    '& .MuiDrawer-paper': {
-      minWidth: '200px',
-    },
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -110,7 +109,6 @@ function MiniDrawer() {
   const themeContext = useContext(ThemeContext);
   const [open, setOpen] = useState(false);
 
-  const DARK_MODE = 'dark';
   const theme = useTheme();
   const themeMode = theme.palette.mode;
 
@@ -122,6 +120,62 @@ function MiniDrawer() {
     setOpen(false);
   };
 
+  const _renderDrawerItems = () => {
+    const items = [
+      {
+        path: '/',
+        text: 'Home',
+        icon: <HomeIcon />,
+      },
+      {
+        path: '/',
+        text: 'Documents',
+        icon: <PictureAsPdfIcon />,
+      },
+      {
+        path: '/',
+        text: 'QR Code',
+        icon: <QrCodeScannerIcon />,
+      },
+      {
+        path: '/',
+        text: 'Insights',
+        icon: <InsightsIcon />,
+      },
+      {
+        path: '/',
+        text: 'More',
+        icon: <TextSnippetIcon />,
+      },
+    ];
+    return (
+      <List>
+        {items.map((item, index) => (
+          <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+            <ListItemButton
+              sx={{
+                minHeight: 60,
+                justifyContent: open ? 'initial' : 'center',
+                px: 3,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    );
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -130,7 +184,7 @@ function MiniDrawer() {
           <FlexBox sx={{ alignItems: 'center' }}>
             <Box
               component="img"
-              src={themeMode === DARK_MODE ? petronasBw : petronasRgb}
+              src={themeMode === 'dark' ? Images.petronasBw : Images.petronasRgb}
               alt={'Home'}
               sx={{
                 px: '22px',
@@ -154,9 +208,9 @@ function MiniDrawer() {
             </IconButton>
             <Box
               component="img"
-              src={themeMode === DARK_MODE ? eptwDark : eptwLight}
+              src={themeMode === 'dark' ? Images.eptwDark : Images.eptwLight}
               alt={'ePTW+'}
-              sx={{ width: 82, height: 44 }}
+              sx={{ width: 82, objectFit: 'contain' }}
             />
           </FlexBox>
           <FlexBox>
@@ -208,56 +262,8 @@ function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 3,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 3,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Divider /> <Box sx={{ height: 24 }} />
+        {_renderDrawerItems()}
       </Drawer>
       {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
