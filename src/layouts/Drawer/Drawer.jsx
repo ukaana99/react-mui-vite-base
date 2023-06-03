@@ -91,8 +91,10 @@ function MainDrawer() {
           {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </DrawerHeader>
-      <Divider /> <Box sx={{ height: 24 }} />
+      <Divider />
+      <Box sx={{ height: 24 }} />
       {_renderDrawerItems()}
+      <Box sx={{ height: 24 }} />
     </Drawer>
   );
 }
