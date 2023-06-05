@@ -1,7 +1,16 @@
 import MuiBox from '@mui/material/Box';
 import MuiButton from '@mui/material/Button';
 import MuiDivider from '@mui/material/Divider';
+import MuiTypography from '@mui/material/Typography';
 import { styled } from '@mui/system';
+
+// Box ----------------------------------------- //
+// export const SectionBox = styled(MuiBox)({
+//   borderRadius: '8px',
+//   flexGrow: 1,
+//   px: 4,
+//   py: 2,
+// });
 
 // FlexBox ----------------------------------------- //
 export const FlexBox = styled(MuiBox)({
@@ -17,11 +26,6 @@ export const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
   width: '100%',
   height: '100%',
 });
-
-// Divider ----------------------------------------- //
-export const Divider = styled(MuiDivider)(({ theme }) => ({
-  background: '#C9D5E3',
-}));
 
 // Button ----------------------------------------- //
 export const CreateButton = styled(MuiButton)({

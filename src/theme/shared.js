@@ -1,5 +1,3 @@
-import { Colors } from '@/constants';
-
 const sharedTheme = {
   palette: {
     background: {
@@ -8,8 +6,44 @@ const sharedTheme = {
     },
   },
   typography: {
+    fontFamily: 'Inter',
     button: {
       textTransform: 'none',
+    },
+    h4: {
+      fontWeight: 700,
+      fontSize: '2rem',
+    },
+    h5: {
+      fontWeight: 700,
+    },
+    h6: {
+      fontWeight: 700,
+    },
+    h3: {
+      fontWeight: 700,
+    },
+    h2: {
+      fontWeight: 700,
+    },
+    h1: {
+      fontWeight: 700,
+    },
+    subtitle1: {
+      fontSize: '0.875rem',
+      fontWeight: 500,
+    },
+    subtitle2: {
+      fontSize: '0.8rem',
+      fontWeight: 500,
+    },
+    body1: {
+      fontSize: '0.875rem',
+      fontWeight: 400,
+    },
+    body2: {
+      fontSize: '0.8rem',
+      fontWeight: 400,
     },
   },
   components: {

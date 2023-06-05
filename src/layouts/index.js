@@ -1,3 +1,4 @@
 import MainLayout from './MainLayout';
+import PageLayout from './PageLayout';
 
-export default MainLayout;
+export { MainLayout, PageLayout };
