@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import { FlexBox } from '@/components/styled';
 import { Images } from '@/constants';
 import PageLayout from '@/layouts/PageLayout';
-import { FlexBox } from '@/utils/components/styled';
 
 function Dashboard() {
   return (

@@ -8,10 +8,10 @@ import { LayoutContextProvider } from './store/layout-context';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <LayoutContextProvider>
+    <LayoutContextProvider>
+      <BrowserRouter>
         <App />
-      </LayoutContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </LayoutContextProvider>
   </React.StrictMode>,
 );

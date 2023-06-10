@@ -9,9 +9,8 @@ function AppRoutes() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="jha" element={null} />
-        <Route path="*" />
+        <Route path="*" element={null} />
       </Route>
-      ,
     </Routes>
   );
 }

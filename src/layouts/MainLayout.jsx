@@ -14,7 +14,7 @@ function MainLayout() {
       <CssBaseline />
       <AppBar />
       <Drawer />
-      <Box color="primary" component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
+      <Box color="primary" component="main" sx={{ flexGrow: 1, px: 4, pt: 3, pb: 4 }}>
         <DrawerHeader />
         <Breadcrumbs />
         <Outlet />

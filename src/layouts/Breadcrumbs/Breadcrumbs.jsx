@@ -22,7 +22,7 @@ function MainBreadcrumbs() {
       currentPath += `/${path}`;
 
       return (
-        <MuiLink key={path} to={currentPath} color="inherit" underline="none">
+        <MuiLink component={Link} key={path} to={currentPath} color="inherit" underline="none">
           {path}
         </MuiLink>
       );

@@ -1,11 +1,15 @@
-import { createContext, useMemo, useState } from 'react';
+import { createContext, useState } from 'react';
+import { useEffect } from 'react';
 
 import { createTheme } from '@mui/material/styles';
 
 import themes from '@/theme';
 
+let globalMode = localStorage.getItem('theme-mode');
+
 const LayoutContext = createContext({
-  mode: 'light',
+  mode: globalMode,
+  theme: themes[globalMode],
   isDrawerOpen: false,
   toggleMode: () => {},
   openDrawer: () => {},
@@ -13,7 +17,7 @@ const LayoutContext = createContext({
 });
 
 const LayoutContextProvider = (props) => {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState(globalMode);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleMode = () => setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
@@ -23,8 +27,12 @@ const LayoutContextProvider = (props) => {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
-  const theme = useMemo(() => createTheme(themes[mode]), [mode]);
 
+  useEffect(() => {
+    localStorage.setItem('theme-mode', mode);
+  }, [mode]);
+
+  const theme = createTheme(themes[mode]);
   return (
     <LayoutContext.Provider
       value={{ mode, theme, isDrawerOpen, toggleMode, openDrawer, closeDrawer }}

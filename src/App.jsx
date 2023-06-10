@@ -10,7 +10,6 @@ import { LayoutContext } from './store/layout-context';
 function App() {
   const layoutContext = useContext(LayoutContext);
 
-  console.log(location);
   return (
     <ThemeProvider theme={layoutContext.theme}>
       <CssBaseline />
