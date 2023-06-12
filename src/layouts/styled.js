@@ -73,9 +73,16 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
   }),
 );
 
-export const CreateButton = styled(Button)(({ theme }) => ({
+export const CreateButton = styled(Button)({
   padding: '12px 16px 12px 12px',
   height: '44px',
   width: '120px',
   alignSelf: 'center',
-}));
+});
+
+export const DocumentButton = styled(Button)({
+  padding: 1,
+  height: '60px',
+  width: '260px',
+  justifyContent: 'flex-start',
+});

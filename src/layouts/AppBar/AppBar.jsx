@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
@@ -19,13 +19,18 @@ import { Images } from '@/constants';
 import { LayoutContext } from '@/store/layout-context';
 
 import { AppBar, CreateButton } from '../styled';
+import { CreateDialog } from './CreateDialog';
 
 function MainAppBar() {
   const layoutContext = useContext(LayoutContext);
   const open = layoutContext.isDrawerOpen;
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const theme = useTheme();
   const themeMode = theme.palette.mode;
+
+  const handleClickCreateButton = () => setDialogOpen(true);
+  const handleCloseCreateButton = () => setDialogOpen(false);
 
   return (
     <AppBar color="inherit" elevation={0} position="fixed" open={open}>
@@ -33,7 +38,7 @@ function MainAppBar() {
         <FlexBox sx={{ alignItems: 'center' }}>
           <Box
             component="img"
-            src={themeMode === 'dark' ? Images.petronasBw : Images.petronasRgb}
+            src={themeMode === 'dark' ? Images.PetronasBw : Images.PetronasRgb}
             alt={'Home'}
             sx={{
               px: '22px',
@@ -57,7 +62,7 @@ function MainAppBar() {
           </IconButton>
           <Box
             component="img"
-            src={themeMode === 'dark' ? Images.eptwDark : Images.eptwLight}
+            src={themeMode === 'dark' ? Images.EptwDark : Images.EptwLight}
             alt={'ePTW+'}
             sx={{ width: 82, objectFit: 'contain' }}
           />
@@ -70,10 +75,12 @@ function MainAppBar() {
                 disableElevation
                 size="large"
                 variant="contained"
+                onClick={handleClickCreateButton}
               >
                 Create
               </CreateButton>
             </Tooltip>
+            <CreateDialog open={dialogOpen} onClose={handleCloseCreateButton} />
           </FlexBox>
           <Box sx={{ width: 12 }} />
           <Tooltip title="Switch theme" arrow>

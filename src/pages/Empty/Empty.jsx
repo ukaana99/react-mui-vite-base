@@ -5,9 +5,9 @@ import { FlexBox } from '@/components/styled';
 import { Images } from '@/constants';
 import PageLayout from '@/layouts/PageLayout';
 
-function Dashboard() {
+function Empty() {
   return (
-    <PageLayout title="Dashboard">
+    <PageLayout title="Page Not Found">
       <FlexBox
         justifyContent="center"
         height="720px"
@@ -22,7 +22,7 @@ function Dashboard() {
           <Box component="img" src={Images.Dashboard} alt={'Dashboard'} />
           <Box height={16} />
           <Typography variant="h6" color="primary" fontSize={18}>
-            Hello, this is a placeholder dashboard.
+            Error! Page not found.
           </Typography>
         </FlexBox>
       </FlexBox>
@@ -30,4 +30,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Empty;

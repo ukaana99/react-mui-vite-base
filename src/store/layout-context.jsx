@@ -5,7 +5,7 @@ import { createTheme } from '@mui/material/styles';
 
 import themes from '@/theme';
 
-let globalMode = localStorage.getItem('theme-mode');
+const globalMode = localStorage.getItem('theme-mode') ?? 'light';
 
 const LayoutContext = createContext({
   mode: globalMode,
