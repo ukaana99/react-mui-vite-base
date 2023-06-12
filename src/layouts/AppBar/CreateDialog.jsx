@@ -42,7 +42,7 @@ function CreateDialog(props) {
     },
     {
       path: '/jha',
-      icon: Icons.SafetyHelmet,
+      icon: Icons.Toolbox,
       title: 'JHA',
       description: 'Job Hazard Analysis',
       disabled: false,
@@ -56,7 +56,7 @@ function CreateDialog(props) {
     },
     {
       path: '/rp',
-      icon: Icons.SafetyHelmet,
+      icon: Icons.FirstAid,
       title: 'RP',
       description: 'Rescue Plan',
       disabled: false,
@@ -70,7 +70,7 @@ function CreateDialog(props) {
     },
     {
       path: '/eic',
-      icon: Icons.SafetyHelmet,
+      icon: Icons.SolarPanel,
       title: 'EIC',
       description: 'Electrical Isolation Certificate',
       disabled: false,
@@ -169,13 +169,14 @@ function CreateDialog(props) {
           mb: 2,
         }}
       >
-        <Box display="flex" sx={{ textAlign: 'left', alignItems: 'center' }}>
+        <Box display="flex" sx={{ alignItems: 'center' }}>
           <Box
             color="primary.main"
             component="img"
             src={doc.icon}
             sx={{
               width: 60,
+              height: 60,
               objectFit: 'none',
             }}
           />

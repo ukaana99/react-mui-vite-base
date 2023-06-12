@@ -19,7 +19,7 @@ function Dashboard() {
       >
         <FlexBox flexDirection="column" alignItems="center" width={395}>
           <Box height={152} />
-          <Box component="img" src={Images.Dashboard} alt={'Dashboard'} />
+          <Box component="img" src={Images.Maintenance} alt={'Dashboard'} />
           <Box height={16} />
           <Typography variant="h6" color="primary" fontSize={18}>
             Hello, this is a placeholder dashboard.

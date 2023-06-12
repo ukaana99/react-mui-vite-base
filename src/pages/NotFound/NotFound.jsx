@@ -5,7 +5,7 @@ import { FlexBox } from '@/components/styled';
 import { Images } from '@/constants';
 import PageLayout from '@/layouts/PageLayout';
 
-function Empty() {
+function NotFound() {
   return (
     <PageLayout title="Page Not Found">
       <FlexBox
@@ -19,7 +19,7 @@ function Empty() {
       >
         <FlexBox flexDirection="column" alignItems="center" width={395}>
           <Box height={152} />
-          <Box component="img" src={Images.Dashboard} alt={'Dashboard'} />
+          <Box component="img" src={Images.Maintenance} alt={'Not found'} />
           <Box height={16} />
           <Typography variant="h6" color="primary" fontSize={18}>
             Error! Page not found.
@@ -30,4 +30,4 @@ function Empty() {
   );
 }
 
-export default Empty;
+export default NotFound;

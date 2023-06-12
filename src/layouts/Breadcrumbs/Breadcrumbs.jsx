@@ -39,7 +39,7 @@ function MainBreadcrumbs() {
 
   return (
     <Breadcrumbs aria-label="breadcrumb" fontSize={fontSize} fontWeight={fontWeight}>
-      <Button to="/" color="primary" component={Link}>
+      <Button sx={{pl:0}} to="/" color="primary" component={Link}>
         <HomeIcon color="inherit" sx={{ mr: 1 }} />
         <Typography fontSize={fontSize} fontWeight={fontWeight}>
           Home
